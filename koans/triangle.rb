@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Triangle Project Code.
 
 # Triangle analyzes the lengths of the sides of a triangle
@@ -14,13 +16,17 @@
 #   about_triangle_project_2.rb
 #
 def triangle(a, b, c)
-  a,b,c = [a,b,c].sort
-  raise TriangleError if a<=0 || a+b<=c
-  a==b ? lado1=true : lado1=false
-  a==c ? lado2=true : lado2=false
-  b==c ? lado3=true : lado3=false
-  lado1==true && lado2==true ? :equilateral :
-  lado1==true || lado2==true || lado3==true ? :isosceles : :scalene
+  a, b, c = [a, b, c].sort
+  raise TriangleError if a <= 0 || a + b <= c
+
+  lado1 = a == b
+  lado2 = a == c
+  lado3 = b == c
+  if lado1 == true && lado2 == true
+    :equilateral
+  else
+    lado1 == true || lado2 == true || lado3 == true ? :isosceles : :scalene
+  end
   # WRITE THIS CODE
 end
 
